@@ -27,26 +27,42 @@ def crear_poligono_2d(nombre, lados, radio):
     malla = bpy.data.meshes.new(nombre)
     objeto = bpy.data.objects.new(nombre, malla)
 
-    # Vincular el objeto a la colección activa
+### 🐍 Script para Generación de Polígono 2D en Blender
+
+Copia y pega el siguiente código en el editor de texto de Blender:
+
+```python
+import bpy
+import math
+
+def crear_poligono_2d(nombre, lados, radio):
+    malla = bpy.data.meshes.new(nombre)
+    objeto = bpy.data.objects.new(nombre, malla)
+
     bpy.context.collection.objects.link(objeto)
 
     vertices = []
     aristas = []
 
-    # Cálculo de coordenadas cartesianas (x, y)
     for i in range(lados):
         angulo = 2 * math.pi * i / lados 
         x = radio * math.cos(angulo)
         y = radio * math.sin(angulo)
         vertices.append((x, y, 0))
 
-    # Conexión de aristas para cerrar el polígono
     for i in range(lados):
         aristas.append((i, (i + 1) % lados))
     
-    # Construcción de la geometría desde los datos generados
     malla.from_pydata(vertices, aristas, [])
     malla.update()
+
+# Limpiar escena antes de crear el nuevo polígono
+bpy.ops.object.select_all(action="SELECT")
+bpy.ops.object.delete()
+    
+# Llamada a la función
+crear_poligono_2d("poligono 2d", lados=6, radio=3)
+```
 
 # Limpiar escena previa
 bpy.ops.object.select_all(action="SELECT")
