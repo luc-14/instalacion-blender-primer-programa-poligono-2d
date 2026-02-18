@@ -63,3 +63,6 @@ crear_poligono_2d("poligono 2d", lados=6, radio=3)
 ```
 Ya escrito el codigo en la aplicación se visualiza de la siguiente manera
 <img width="1919" height="1137" alt="image" src="https://github.com/user-attachments/assets/daa47fda-2e1f-4d69-ab9c-f714c5c79ff2" />
+Para ejecutar el codigo nos dirigimos al triangulito señalado en la imagem y en la esquina superior derecha veremos el poligono generado por el codigo
+<img width="1918" height="1142" alt="image" src="https://github.com/user-attachments/assets/474b1215-c904-4779-bffc-f5585cf300f5" />
+Con esto concluimos que hemos terminado nuestra práctica de manera exitosa
