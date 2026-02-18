@@ -56,19 +56,10 @@ def crear_poligono_2d(nombre, lados, radio):
     malla.from_pydata(vertices, aristas, [])
     malla.update()
 
-# Limpiar escena antes de crear el nuevo polígono
 bpy.ops.object.select_all(action="SELECT")
 bpy.ops.object.delete()
     
-# Llamada a la función
 crear_poligono_2d("poligono 2d", lados=6, radio=3)
 ```
-
-# Limpiar escena previa
-bpy.ops.object.select_all(action="SELECT")
-bpy.ops.object.delete()
-    
-# Ejecución: Polígono de 6 lados (Hexágono) con radio de 3 unidades
-crear_poligono_2d("poligono 2d", lados=6, radio=3)
 Ya escrito el codigo en la aplicación se visualiza de la siguiente manera
 <img width="1919" height="1137" alt="image" src="https://github.com/user-attachments/assets/daa47fda-2e1f-4d69-ab9c-f714c5c79ff2" />
