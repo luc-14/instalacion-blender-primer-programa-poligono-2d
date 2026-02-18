@@ -16,33 +16,43 @@ Una vez dentro del menú nos dirigimos al apartado de "NEW", como se muestra en 
 Se nos habilitará una sección para ingresar codigo, donde posteriormente ingresaremos el siguiente codigo
 <img width="1919" height="1137" alt="image" src="https://github.com/user-attachments/assets/624d1dc9-7953-4a64-8024-222621ee5b70" />
 El codigo a ingresar es el siguiente:
-` ` `import bpy` ` `
-` ` `import math` ` `
+import bpy
+import math
 
-` ` `def crear_poligono_2d(nombre, lados, radio):` ` `
-  ` ` ` malla = bpy.data.meshes.new(nombre)` ` `
- ` ` `  objeto = bpy.data.objects.new(nombre, malla)` ` `
+def crear_poligono_2d(nombre, lados, radio):
+    """
+    Genera un polígono regular en 2D dentro del entorno de Blender.
+    Aplica conceptos de trigonometría para el cálculo de vértices.
+    """
+    malla = bpy.data.meshes.new(nombre)
+    objeto = bpy.data.objects.new(nombre, malla)
 
-  ` ` ` bpy.context.collection.objects.link(objeto)` ` `
+    # Vincular el objeto a la colección activa
+    bpy.context.collection.objects.link(objeto)
 
-  ` ` ` vertices = []` ` `
- ` ` `  aristas = []` ` `
+    vertices = []
+    aristas = []
 
-` ` `   for i in range(lados):` ` `
-     ` ` ` angulo = 2 * math.pi * i / lados ` ` `
-    ` ` `  x = radio * math.cos (angulo)` ` `
-     ` ` ` y = radio * math.sin (angulo)` ` `
-     ` ` ` vertices.append((x, y, 0))` ` `
+    # Cálculo de coordenadas cartesianas (x, y)
+    for i in range(lados):
+        angulo = 2 * math.pi * i / lados 
+        x = radio * math.cos(angulo)
+        y = radio * math.sin(angulo)
+        vertices.append((x, y, 0))
 
-  ` ` ` for i in range(lados):` ` `
-     ` ` ` aristas.append((i, (i+1) % lados))` ` `
+    # Conexión de aristas para cerrar el polígono
+    for i in range(lados):
+        aristas.append((i, (i + 1) % lados))
     
- ` ` `  malla.from_pydata(vertices, aristas, [])` ` `
-  ` ` ` malla.update()` ` `
+    # Construcción de la geometría desde los datos generados
+    malla.from_pydata(vertices, aristas, [])
+    malla.update()
 
-` ` `bpy.ops.object.select_all(action = "SELECT")` ` `
-` ` `bpy.ops.object.delete()` ` `
+# Limpiar escena previa
+bpy.ops.object.select_all(action="SELECT")
+bpy.ops.object.delete()
     
-` ` `crear_poligono_2d("poligono 2d", lados = 6, radio =3) ` ` `
+# Ejecución: Polígono de 6 lados (Hexágono) con radio de 3 unidades
+crear_poligono_2d("poligono 2d", lados=6, radio=3)
 Ya escrito el codigo en la aplicación se visualiza de la siguiente manera
 <img width="1919" height="1137" alt="image" src="https://github.com/user-attachments/assets/daa47fda-2e1f-4d69-ab9c-f714c5c79ff2" />
