@@ -16,7 +16,7 @@ Una vez dentro del menú nos dirigimos al apartado de "NEW", como se muestra en 
 Se nos habilitará una sección para ingresar codigo, donde posteriormente ingresaremos el siguiente codigo
 <img width="1919" height="1137" alt="image" src="https://github.com/user-attachments/assets/624d1dc9-7953-4a64-8024-222621ee5b70" />
 El codigo a ingresar es el siguiente:
-import bpy
+` ` `import bpy
 import math
 
 def crear_poligono_2d(nombre, lados, radio):
@@ -43,6 +43,6 @@ def crear_poligono_2d(nombre, lados, radio):
 bpy.ops.object.select_all(action = "SELECT")
 bpy.ops.object.delete()
     
-crear_poligono_2d("poligono 2d", lados = 6, radio =3) 
+crear_poligono_2d("poligono 2d", lados = 6, radio =3) ` ` `
 Ya escrito el codigo en la aplicación se visualiza de la siguiente manera
 <img width="1919" height="1137" alt="image" src="https://github.com/user-attachments/assets/daa47fda-2e1f-4d69-ab9c-f714c5c79ff2" />
