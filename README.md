@@ -66,3 +66,141 @@ Ya escrito el codigo en la aplicación se visualiza de la siguiente manera
 Para ejecutar el codigo nos dirigimos al triangulito señalado en la imagem y en la esquina superior derecha veremos el poligono generado por el codigo
 <img width="1918" height="1142" alt="image" src="https://github.com/user-attachments/assets/474b1215-c904-4779-bffc-f5585cf300f5" />
 Con esto concluimos que hemos terminado nuestra práctica de manera exitosa
+
+REPORTE: Creación de una Flor con Círculos en Blender usando Python
+1. Introducción
+
+El presente reporte describe el procedimiento para crear una figura con forma de flor mediante el uso de círculos generados con un script en Python dentro de Blender.
+
+La figura se compone de:
+
+Un círculo central.
+
+Doce círculos distribuidos uniformemente alrededor del centro.
+
+La distribución se realiza utilizando coordenadas polares convertidas a coordenadas cartesianas mediante funciones trigonométricas.
+
+<img width="1890" height="1130" alt="image" src="https://github.com/user-attachments/assets/65353978-2c02-49a9-9c26-4673787a7134" />
+
+
+2. Objetivo
+
+Generar una figura geométrica tipo flor utilizando programación en Blender, aplicando cálculos matemáticos para posicionar los círculos de manera simétrica.
+
+3. Desarrollo del Código
+3.1 Limpieza de la escena
+bpy.ops.object.select_all(action='SELECT')
+bpy.ops.object.delete()
+
+Esta sección selecciona todos los objetos presentes en la escena y los elimina.
+El propósito es iniciar el proyecto en un entorno vacío para evitar interferencias con objetos previos.
+
+<img width="506" height="674" alt="image" src="https://github.com/user-attachments/assets/181e054e-2b1b-46ae-88b8-898fcd8837b2" />
+<img width="462" height="675" alt="image" src="https://github.com/user-attachments/assets/c57e1f10-bb10-4efa-8ba0-4bc7f9a11527" />
+
+
+3.2 Definición de parámetros
+radio = 3
+angulo_actual = 0
+paso_angular = 30
+
+Se establecen los valores principales:
+
+radio: tamaño de cada círculo.
+
+angulo_actual: ángulo inicial en grados.
+
+paso_angular: incremento angular entre cada círculo.
+
+Dado que 360° dividido entre 30° es igual a 12, el programa generará 12 círculos alrededor del centro.
+
+3.3 Creación del círculo central
+bpy.ops.mesh.primitive_circle_add(radius=radio, location=(0, 0, 0), vertices=64)
+
+Se crea un círculo en el origen (0, 0, 0).
+El parámetro vertices=64 permite que el círculo tenga mayor suavidad visual.
+
+Este círculo representa el centro de la flor.
+
+<img width="1666" height="972" alt="image" src="https://github.com/user-attachments/assets/4f2ae02c-a262-4c09-8944-f08c15ce1045" />
+
+
+3.4 Creación de los círculos periféricos
+while angulo_actual < 360:
+
+Se utiliza un ciclo while que se ejecuta hasta completar 360 grados.
+
+Dentro del ciclo se calculan las coordenadas utilizando fórmulas trigonométricas:
+
+x = radio * math.cos(math.radians(angulo_actual))
+y = radio * math.sin(math.radians(angulo_actual))
+
+Estas fórmulas convierten el ángulo en coordenadas cartesianas:
+
+x = r cos(θ)
+
+y = r sin(θ)
+
+De esta manera se posiciona cada círculo alrededor del centro.
+
+Posteriormente se crea el círculo:
+
+bpy.ops.mesh.primitive_circle_add(radius=radio, location=(x, y, 0), vertices=64)
+
+Finalmente, el ángulo se incrementa:
+
+angulo_actual += paso_angular
+
+Este proceso se repite hasta completar los 360 grados.
+
+<img width="1856" height="1058" alt="image" src="https://github.com/user-attachments/assets/d269d571-2b35-4e33-a5a6-37a001b9fcf1" />
+
+
+4. Resultado
+
+El resultado es una figura simétrica compuesta por:
+
+1 círculo central.
+
+12 círculos externos.
+
+Distribución uniforme.
+
+Simetría radial completa.
+
+La superposición parcial de los círculos produce la forma similar a una flor.
+
+<img width="1340" height="928" alt="image" src="https://github.com/user-attachments/assets/78c7ae22-8e64-4776-bed9-5c8aa56e1f95" />
+
+
+5. Fundamento Matemático
+
+El diseño se basa en:
+
+División del círculo completo (360°).
+
+Uso de coordenadas polares.
+
+Conversión a coordenadas cartesianas.
+
+Aplicación de funciones seno y coseno.
+
+Simetría radial.
+
+Estos conceptos permiten crear patrones geométricos de manera automatizada.
+
+6. Conclusión
+
+El script demuestra cómo es posible combinar programación y matemáticas para generar modelos geométricos en Blender.
+
+Se aplican conceptos de:
+
+Automatización mediante Python.
+
+Uso de la API bpy.
+
+Trigonometría aplicada al modelado 3D.
+
+Estructuras de control (bucle while).
+
+El ejercicio permite comprender cómo crear patrones simétricos a partir de formas simples.
